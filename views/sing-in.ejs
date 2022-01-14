@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/login.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,700;0,800;1,200;1,300;1,400&display=swap" rel="stylesheet">
+  <title>Decpy | Sign In</title>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Decpy</h2>
+    <label>Create your Account</label>
+    <form>
+      <div>
+        <input type="text" id="username" placeholder="name"/>
+        <label id="username-error" class="error"></label>
+      </div>
+      <div>
+        <input type="email" id="email" placeholder="email"/>
+        <label id="email-error" class="error"></label>
+      </div>
+      <div>
+        <input type="password" id="password" placeholder="password"/>
+        <label id="password-error" class="error"></label>
+      </div>
+      <input type="submit" id="sing-up" value="Sign up"/>
+    </form>
+  </div>
+  <script src="./js/sign-in.js"></script>
+</body>
+</html>

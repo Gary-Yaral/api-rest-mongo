@@ -19,6 +19,14 @@ const userSquema = mongoose.Schema({
     min:6,
     max:255
   },
+  chats: {
+    type: Array,
+    default: []
+  },
+  contacts: {
+    type: Array,
+    default: []
+  },
   age:{
     type: Date,
     default: Date.now

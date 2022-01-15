@@ -59,7 +59,7 @@ header{
   justify-items: center;
   position:absolute;
   top:0;
-  z-index:4;
+  z-index:10;
 }
 
 header a{
@@ -93,7 +93,6 @@ ion-icon{
   border: 1px solid rgb(241, 241, 241);
   font-size: .8rem;
 }
-
 
 input{
   width: 95%;
@@ -148,7 +147,6 @@ input{
   margin-right: 1rem;
   justify-content: center;
   align-items: center;
-
 }
 
 .button-remove{
@@ -166,14 +164,46 @@ input{
 
 }
 
+.contact-container{
+  width: 100%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+
+}
+
+.li-contact{
+  border-bottom: 1px solid gray;
+  height: 3.5rem;
+  box-sizing: border-box;
+  width: 95%;
+  padding: 10px .5rem ;
+  text-decoration: none;
+  color: #000;
+}
+
+.contact-name{
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.contact-email{
+  font-size:12px;
+}
+
+
 .modal{
   display:flex;
   position: absolute;
-  z-index:2;
-  width: 100%;
+  z-index:0;
+  width: 50%;
+  min-width: fit-content;
   background:var(--white);
   flex-direction: column;
   top: 4rem;
+  right: 0;
+  box-shadow: -1px 1px 2px 1px rgb(212, 212, 212);
 }
 
 .modal-hidden{
@@ -182,12 +212,17 @@ input{
 
 .modal a {
   display:flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   height: 2rem;
   text-decoration: none;
-  border-bottom: 1px solid gray;
   font-size:12px;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.modal a:hover{
+  background: #dedede;
 }
 
 @media screen and (max-width: 550px) {

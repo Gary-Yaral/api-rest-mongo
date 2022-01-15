@@ -27,6 +27,10 @@ router.get('/0/search', (req, res) => {
   res.render('search')
 })
 
+router.get('/0/contacts', (req, res) => {
+  res.render('contacts')
+})
+
 router.get('/log-in', (req, res) => {
   res.render('log-in')
 })

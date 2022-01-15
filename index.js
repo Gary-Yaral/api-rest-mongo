@@ -32,7 +32,7 @@ const SocketIO = require('socket.io');
 const io = SocketIO(server); 
 
 io.on('connection', (socket) =>{
-  console.log('connected')
+  console.log('search')
   socket.on('search:value', async (data) =>{
     const results = await Model.find({name: new RegExp("^" + data.value ,'i')});
     socket.emit('search:result', {results})
@@ -55,10 +55,15 @@ io.on('connection', (socket) =>{
     await Model.updateOne({_id}, {$pull: {contacts:null}});
     const results = await Model.updateOne({_id}, {$pull: {contacts:contactID}});
     socket.emit('contact:removed', {removedID:contactID, results})
+  })  
+
+  socket.on('get:contacts', async(data) => {
+    const { _id } = data;
+  
+    const user = await Model.findOne({_id}, {passsword: 0, email:0});
+    const results = await Model.find({_id: {$in: user.contacts}}, {password: 0, contacts: 0, chats:0 });
+    socket.emit('post:contacts', {results});
   })
-
-  
-
-  
 })
+
 

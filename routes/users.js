@@ -19,8 +19,12 @@ router.get('/sign-in', (req, res) => {
   res.render('sing-in')
 })
 
-router.get('/0/chat', (req, res) => {
-  res.render('contacts')
+router.get('/0/home', (req, res) => {
+  res.render('chat-room')
+})
+
+router.get('/0/search', (req, res) => {
+  res.render('search')
 })
 
 router.get('/log-in', (req, res) => {

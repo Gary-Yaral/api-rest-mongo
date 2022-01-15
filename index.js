@@ -34,9 +34,30 @@ const io = SocketIO(server);
 io.on('connection', (socket) =>{
   console.log('connected')
   socket.on('search:value', async (data) =>{
-    const results = await Model.find({$or:[{name: new RegExp(data.value,'i')},{email: new RegExp(data.value,'i')}]}, {password: 0});
-    io.sockets.emit('search:result', {results})
+    const results = await Model.find({name: new RegExp("^" + data.value ,'i')});
+    socket.emit('search:result', {results})
   })
+
+  socket.on('contact:add', async (data) =>{
+    const { _id, contactID } = data;  
+    const results = await Model.updateOne({_id}, {$push:{contacts: contactID}});
+    socket.emit('contact:added', {addedID: contactID, results})
+  })
+
+  socket.on('contact:get', async (data) =>{
+    const { _id } = data;
+    const results = await Model.findOne({_id},{password: 0, _id: 0, email: 0});
+    socket.emit('contact:post', {results})
+  })
+
+  socket.on('contact:remove', async (data) =>{
+    const { _id, contactID } = data; 
+    await Model.updateOne({_id}, {$pull: {contacts:null}});
+    const results = await Model.updateOne({_id}, {$pull: {contacts:contactID}});
+    socket.emit('contact:removed', {removedID:contactID, results})
+  })
+
+  
 
   
 })
